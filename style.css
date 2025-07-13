@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Tailwind customizations */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        font-family: 'Inter', sans-serif;
+    }
+}
+
+@layer utilities {
+    /* Custom Animations */
+    .animate-gradient-x {
+        background-size: 200% auto;
+        animation: gradient-x 4s linear infinite;
+    }
+
+    .animate-pulse-slow {
+        animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 1s ease-out;
+    }
+
+    .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    .animate-slide-in-left {
+        animation: slideInLeft 0.8s ease-out;
+    }
+
+    .animate-slide-in-right {
+        animation: slideInRight 0.8s ease-out;
+    }
+
+    .animate-slide-in-up {
+        animation: slideInUp 0.8s ease-out;
+    }
+}
+
+/* Keyframes */
+@keyframes gradient-x {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Custom Styles for Suggestions */
+.suggestion-item {
+    @apply transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-600/20 hover:border-blue-500;
+}
+
+/* Loading Dots Animation */
+.loading-dots::after {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    text-align: left;
+    animation: dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: ''; }
+    40% { content: '.'; }
+    60% { content: '..'; }
+    80%, 100% { content: '...'; }
+}
